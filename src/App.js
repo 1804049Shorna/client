@@ -52,11 +52,12 @@ function App() {
   return (
     <div className="App">
       <h1 >Gdrive 3.0</h1>
-      <div class="bg"></div>
-      <div class="bg 1"></div>
-      <div class="bg 2"></div>
+      <div className="bg"></div>
+      <div className="bg 1"></div>
+      <div className="bg 2"></div>
       <p>Account : {account ? account : "Please connect Metamask"}</p>
       <Fileupload account={account} provider={provider} contract={contract}></Fileupload>
+      <Display>contract={contract} account={account}</Display>
     </div>
   );
 }
