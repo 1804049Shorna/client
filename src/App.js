@@ -34,7 +34,7 @@ function App() {
       let constractAddress="0x5FbDB2315678afecb367f032d93F642f64180aa3";
       const contract=new ethers.Contract(constractAddress,Upload.abi,signer);
       
-      console.log(contract);
+     // console.log(contract);
       setContract(contract);
       setProvider(provider);
 
@@ -57,7 +57,7 @@ function App() {
       <div className="bg 2"></div>
       <p>Account : {account ? account : "Please connect Metamask"}</p>
       <Fileupload account={account} provider={provider} contract={contract}></Fileupload>
-      <Display>contract={contract} account={account}</Display>
+      <Display contract={contract} account={account}></Display>
     </div>
   );
 }
