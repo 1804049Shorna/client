@@ -50,6 +50,16 @@ function App() {
 
 
   return (
+    <>
+    {/* <Modal setModalOpen={setModalOpen} contract={contract}></Modal> */}
+    {!modalOpen && (
+        <button className="share" onClick={() => setModalOpen(true)}>
+          Share
+        </button>
+      )}
+      {modalOpen && (
+        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
+      )}
     <div className="App">
       <h1 >Gdrive 3.0</h1>
       <div className="bg"></div>
@@ -58,7 +68,9 @@ function App() {
       <p>Account : {account ? account : "Please connect Metamask"}</p>
       <Fileupload account={account} provider={provider} contract={contract}></Fileupload>
       <Display contract={contract} account={account}></Display>
+      {/* <Modal setModalOpen={setModalOpen} contract={contract}></Modal> */}
     </div>
+    </>
   );
 }
 
