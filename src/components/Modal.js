@@ -8,6 +8,27 @@ const Modal =({setModalOpen,contract})=>{
         await contract.giveAccess(address);
         console.log("shared");
     };
+    const remove=async()=>{
+        const address=document.querySelector(".address").value;
+        await contract.disallow(address);
+        console.log("Removed");
+    };
+    useEffect (()=>{
+        const accessList=async()=>{
+            const addressList=await contract.shareAccess();
+            let select=document.querySelector("#selectNumber");
+            let options=addressList;
+            for (let i=0;i<options.length;i++){
+                let opt=options[i];
+                let e1=document.createElement("option");
+                e1.textContent=opt;
+                e1.value=opt;
+                select.appendChild(e1);
+
+            }
+        }
+        contract && accessList();
+    },[contract]);
    return <>
       <div className="modalBackground" >
         <div className="modalContainer">
@@ -23,6 +44,7 @@ const Modal =({setModalOpen,contract})=>{
             <div className="footer">
                 <button onClick={()=>{setModalOpen(false)}} id="cancelBtn">Cancel</button>
                  <button onClick={()=>sharing()}>share</button>
+                 <button onClick={()=>remove()}>Remove</button>
 
             </div>
         </div>
